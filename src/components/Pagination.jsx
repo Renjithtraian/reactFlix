@@ -1,13 +1,20 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from './Context/AppContext'
 
-function Pagination({page,setPage,totalPages}) {
+function Pagination({page,totalPages}) {
+
+  const {dispatch} = useContext(AppContext)
 
   const handleNextPage = () => {
-    setPage((prev) => prev+1)
+    dispatch({
+      type : "NEXT_PAGE",
+    })
   }
   const handlePrevPage = () => {
-    setPage((prev) => prev-1)
+    dispatch({
+      type : "PREV_PAGE",
+    })
   }
 
   return (
